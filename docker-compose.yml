@@ -28,6 +28,7 @@ services:
       - net-php
       - net-mysql
       - net-redis
+      - net-rabbit
 
   mysql:
     image: mysql:8.0.11
@@ -51,7 +52,24 @@ services:
     ports:
       - "6379:6379"
 
+  rabbitmq:
+    image: rabbitmq:3.7.6-management
+    container_name: dnmp-rabbitmq
+    hostname: rabbit
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./conf/rabbitmq.cnf:/etc/rabbitmq/rabbitmq.cnf:ro
+      - ./rabbitmq/:/var/lib/rabbitmq/:rw
+      - ./log/:/var/log/dnmp/:rw      
+    networks:
+      - net-rabbit
+    environment:
+      RABBITMQ_DEFAULT_USER: "user"
+      RABBITMQ_DEFAULT_PASS: "123456" 
 networks:
   net-php:
   net-mysql:
   net-redis:
+  net-rabbit:

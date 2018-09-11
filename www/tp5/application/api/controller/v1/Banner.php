@@ -21,16 +21,19 @@ class Banner
      */
     public function getBanner($id)
     {
-        $validate = new DataValidate;
-        
-        if($validate->scene('test')->goCheck()){
-            echo '通过';
-        }else{
-            throw new MissException([
-                'msg' => '请求banner不存在',
-                'errorCode' => 40000
-            ]);
-        }
+        //phpinfo();
+        print_r($id);
+        echo 'hha';
+        print_r('1');
+//        $validate = new DataValidate;
+//        if($validate->scene('test')->goCheck()){
+//            echo '通过';
+//        }else{
+//            throw new MissException([
+//                'msg' => '请求banner不存在',
+//                'errorCode' => 40000
+//            ]);
+//        }
 
     }
 }

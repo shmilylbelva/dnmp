@@ -19,16 +19,17 @@ class Banner
      * @http GET
      * @param $id abnner的id号
      */
-    public function getBanner($id='1')
+    public function getBanner($id)
     {
         $validate = new DataValidate;
+        
         if($validate->scene('test')->goCheck()){
             echo '通过';
         }else{
             throw new MissException([
                 'msg' => '请求banner不存在',
                 'errorCode' => 40000
-            ])
+            ]);
         }
 
     }

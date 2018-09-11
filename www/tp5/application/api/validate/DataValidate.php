@@ -10,6 +10,7 @@ namespace app\api\validate;
 class DataValidate extends BaseValidate
 {
     protected $rule = [
+        'id' => 'require',
         'name' => 'require|max:25',
         'age' => 'require|number|between:1,120',
         'email' => 'require|email',

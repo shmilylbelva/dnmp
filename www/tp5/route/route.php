@@ -13,7 +13,7 @@ Route::get('think', function () {
     return 'hello,ThinkPHP5!';
 });
 
-Route::get('banner/:id', 'api/v1.Banner/getBanner');
+Route::get('api/:v/banner/:id', 'api/:v.Banner/getBanner')->pattern(['v' => 'v[1-2]']);
 
 return [
 

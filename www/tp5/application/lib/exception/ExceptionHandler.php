@@ -10,6 +10,9 @@ namespace app\lib\exception;
 
 use Exception;
 use think\exception\Handle;
+use think\facade\Config;
+use think\facade\Log;
+
 
 class ExceptionHandler extends Handle
 {
@@ -25,9 +28,16 @@ class ExceptionHandler extends Handle
             $this->msg = $e->msg;
             $this->errorCode = $e->errorCode;
         }else{
-            $this->code = 500;
-            $this->msg = '服务器异常';
-            $this->errorCode = 999;
+            //调试模式是否开启
+            if (Config::get('app.app_debug')){
+                return parent::render($e);
+            }else{
+                $this->code = 500;
+                $this->msg = '服务器异常';
+                $this->errorCode = 999;
+                $this->recordErrorLog($e);
+            }
+
         }
         $result = [
             'msg' => $this->msg,
@@ -35,5 +45,9 @@ class ExceptionHandler extends Handle
             'request_url' => request()->url()
         ];
         return json($result,$this->code);
+    }
+
+    private function recordErrorLog(Exception $e){
+        Log::write($e->getMessage(),'error');
     }
 }

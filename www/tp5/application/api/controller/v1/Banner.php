@@ -10,7 +10,7 @@ namespace app\api\controller\v1;
 
 use app\api\validate\DataValidate;
 use app\lib\exception\MissException;
-
+use app\api\model\BannerItem as modelBanner;
 class Banner
 {
     /**
@@ -21,19 +21,22 @@ class Banner
      */
     public function getBanner($id)
     {
-        //phpinfo();
-        print_r($id);
-        echo 'hha';
-        print_r('1');
-//        $validate = new DataValidate;
-//        if($validate->scene('test')->goCheck()){
-//            echo '通过';
-//        }else{
-//            throw new MissException([
-//                'msg' => '请求banner不存在',
-//                'errorCode' => 40000
-//            ]);
-//        }
+//       $validate = new DataValidate;
+//       if($validate->scene('test')->goCheck()){
+       if((new DataValidate())->batch()->scene('test')->goCheck()){
+//           print_r(__DIR__);
+           $result = modelBanner::get($id);
+//           $result = modelBanner::getBannerById($id);
+           if (!$result){
+               throw new MissException();
+           }
+           return json($result);
+       }else{
+//           throw new MissException([
+//               'msg' => '请求banner不存在',
+//               'errorCode' => 40000
+//           ]);
+       }
 
     }
 }

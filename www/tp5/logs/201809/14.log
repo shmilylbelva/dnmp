@@ -1,0 +1,12 @@
+---------------------------------------------------------------
+[ 2018-09-14T16:57:32+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/banner/1?XDEBUG_SESSION_START=10214
+[ error ] Class 'app\api\model\BannerItem' not found
+---------------------------------------------------------------
+[ 2018-09-14T16:57:55+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/banner/1?XDEBUG_SESSION_START=10214
+[ error ] Class 'app\api\model\Banner_item' not found
+---------------------------------------------------------------
+[ 2018-09-14T16:58:47+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/banner/1?XDEBUG_SESSION_START=10214
+[ error ] Class 'app\api\model\BannerItem' not found
+---------------------------------------------------------------
+[ 2018-09-14T17:05:33+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/banner/1?XDEBUG_SESSION_START=10214
+[ error ] Class 'app\api\model\BannerItem' not found

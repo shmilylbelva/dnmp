@@ -6,7 +6,7 @@
  * Time: 16:05
  */
 
-namespace app\api\controller\v1;
+namespace app\api\controller\v2;
 
 use app\api\validate\DataValidate;
 use app\lib\exception\MissException;
@@ -22,6 +22,7 @@ class Banner
      */
     public function getBanner($id)
     {
+        print_r('v2');
 //       $validate = new DataValidate;
 //       if($validate->scene('test')->goCheck()){
         (new DataValidate())->batch()->scene('test')->goCheck();

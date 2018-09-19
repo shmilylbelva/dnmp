@@ -1,0 +1,24 @@
+---------------------------------------------------------------
+[ 2018-09-19T09:30:46+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/banner/1
+[ error ] Missing argument 1 for think\db\Query::with()
+---------------------------------------------------------------
+[ 2018-09-19T09:31:02+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/banner/1
+[ error ] Missing argument 1 for think\db\Query::with()
+---------------------------------------------------------------
+[ 2018-09-19T09:39:46+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/banner/1
+[ error ] Use of undefined constant data - assumed 'data'
+---------------------------------------------------------------
+[ 2018-09-19T09:40:06+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/banner/1
+[ error ] property not exists:app\api\model\Banner->data
+---------------------------------------------------------------
+[ 2018-09-19T09:40:12+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/banner/1
+[ error ] Cannot use [] for reading
+---------------------------------------------------------------
+[ 2018-09-19T09:40:25+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/banner/1
+[ error ] Use of undefined constant id - assumed 'id'
+---------------------------------------------------------------
+[ 2018-09-19T09:41:00+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/banner/1
+[ error ] property not exists:app\api\model\Banner->data
+---------------------------------------------------------------
+[ 2018-09-19T16:53:02+08:00 ] 127.0.0.1 GET www.tp5.com/api/v2/banner/1
+[ error ] controller not exists:app\api\controller\V2

@@ -7,14 +7,20 @@
 
 namespace app\api\model;
 
-
-use think\Db;
 use think\Model;
 
-class BannerItem extends Model
+class Banner extends Model
 {
-    public static function getBannerById($id){
-        $result = Db::table('banner_item')->where('id',$id)->find();
-        return $result;
+    protected $hidden = ['delete_time', 'update_time', 'id'];
+
+    public function items()
+    {
+        return $this->hasMany('BannerItem', 'banner_id', 'id');
+    }
+
+    public static function getBannerById($id)
+    {
+//         hidden(['create_time','update_time']);
+        return self::with(['items', 'items.img'])->append(['id'])->find($id);//toJson
     }
 }

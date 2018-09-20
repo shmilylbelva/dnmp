@@ -9,8 +9,8 @@
 namespace app\api\controller\v1;
 
 use app\api\validate\DataValidate;
-use app\lib\exception\MissException;
 use app\api\model\Banner as modelBanner;
+use app\lib\exception\MissException;
 
 class Banner
 {
@@ -26,7 +26,7 @@ class Banner
 //       if($validate->scene('test')->goCheck()){
         (new DataValidate())->batch()->scene('test')->goCheck();
         $result = modelBanner::getBannerById($id);
-        if (!$result) {
+        if ($result->isEmpty()) {
             throw new MissException();
         }
 

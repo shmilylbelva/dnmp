@@ -1,0 +1,37 @@
+---------------------------------------------------------------
+[ 2018-09-20T09:19:47+08:00 ] 127.0.0.1 GET www.tp5.com/api/v2/banner/1
+[ error ] SQLSTATE[HY000] [2002] 由于目标计算机积极拒绝，无法连接。
+
+---------------------------------------------------------------
+[ 2018-09-20T10:01:06+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/theme?1,2,3
+[ error ] method param miss:ids
+---------------------------------------------------------------
+[ 2018-09-20T10:32:23+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/theme?XDEBUG_SESSION_START=17330&ids=1,2
+[ error ] Use of undefined constant ture - assumed 'ture'
+---------------------------------------------------------------
+[ 2018-09-20T10:36:30+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/theme?XDEBUG_SESSION_START=17330&ids=1,2,3
+[ error ] syntax error, unexpected 'print_r' (T_STRING), expecting function (T_FUNCTION)
+---------------------------------------------------------------
+[ 2018-09-20T11:16:35+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/theme?ids=1,2,3x&XDEBUG_SESSION_START=14545
+[ error ] Undefined property: app\api\validate\ThemeValidate::$errorCode
+---------------------------------------------------------------
+[ 2018-09-20T11:16:58+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/theme?ids=1,2,3x&XDEBUG_SESSION_START=14545
+[ error ] Undefined class constant 'errorCode'
+---------------------------------------------------------------
+[ 2018-09-20T11:17:07+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/theme?ids=1,2,3x&XDEBUG_SESSION_START=14545
+[ error ] Undefined property: app\api\validate\ThemeValidate::$errorCode
+---------------------------------------------------------------
+[ 2018-09-20T11:29:57+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/theme?ids=123&XDEBUG_SESSION_START=14545
+[ error ] Non-static method app\api\model\Theme::getThemeById() should not be called statically, assuming $this from incompatible context
+---------------------------------------------------------------
+[ 2018-09-20T12:04:56+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/theme/1?ids=1,2,3&XDEBUG_SESSION_START=14545
+[ error ] Undefined offset: 0
+---------------------------------------------------------------
+[ 2018-09-20T12:05:59+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/theme/1?ids=1&XDEBUG_SESSION_START=14545
+[ error ] Undefined offset: 0
+---------------------------------------------------------------
+[ 2018-09-20T12:06:06+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/theme/1?id=1&XDEBUG_SESSION_START=14545
+[ error ] Undefined offset: 0
+---------------------------------------------------------------
+[ 2018-09-20T12:06:13+08:00 ] 127.0.0.1 GET www.tp5.com/api/v1/theme/1
+[ error ] Undefined offset: 0

@@ -2,84 +2,40 @@
 
 namespace app\api\controller\v1;
 
-use think\Controller;
-use think\Request;
+use app\api\validate\DataValidate;
+use app\api\validate\ThemeValidate;
+use app\api\model\Theme as modelTheme;
+use app\lib\exception\ThemeException;
 
-class Theme extends Controller
+class Theme
 {
     /**
-     * 显示资源列表
+     * 获取主题
      *
      * @return \think\Response
      */
-    public function index()
+    public function getSimpleList($ids='')
     {
         //
+        (new ThemeValidate())->goCheck();
+        $result = modelTheme::getThemeByIds($ids);
+        if ($result->isEmpty()){
+            throw new ThemeException();
+        }
+        return $result;
     }
 
     /**
-     * 显示创建资源表单页.
-     *
-     * @return \think\Response
+     * 获取某个主题下的列表
+     * @param $id
      */
-    public function create()
-    {
-        //
+    public function getComplexOne($id){
+        (new DataValidate())->goCheck();
+        $result = modelTheme::getThemeListById($id);
+        if ($result->isEmpty()){
+            throw new ThemeException();
+        }
+        return $result;
     }
 
-    /**
-     * 保存新建的资源
-     *
-     * @param  \think\Request  $request
-     * @return \think\Response
-     */
-    public function save(Request $request)
-    {
-        //
-    }
-
-    /**
-     * 显示指定的资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function read($id)
-    {
-        //
-    }
-
-    /**
-     * 显示编辑资源表单页.
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * 保存更新的资源
-     *
-     * @param  \think\Request  $request
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * 删除指定资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function delete($id)
-    {
-        //
-    }
 }

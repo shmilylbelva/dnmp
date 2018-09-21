@@ -17,4 +17,7 @@ class Product extends Base
     public static function getRecent($count){
         return self::limit($count)->order('id', 'desc')->select();
     }
+    public static function getAllInCategory($id){
+        return self::where('category_id','=',$id)->select();
+    }
 }

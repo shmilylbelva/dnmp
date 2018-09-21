@@ -28,6 +28,6 @@ class Theme extends Base
     }
     public static function getThemeListById($id)
     {
-        return self::with('products,topicImg,headImg')->find($id);
+        return self::with('products,topicImg,headImg')->get($id);
     }
 }

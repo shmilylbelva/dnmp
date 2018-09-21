@@ -21,6 +21,6 @@ class Banner extends Model
     public static function getBannerById($id)
     {
 //         hidden(['create_time','update_time']);
-        return self::with(['items', 'items.img'])->append(['id'])->find($id);//toJson
+        return self::with(['items', 'items.img'])->findOrEmpty($id);//toJson
     }
 }

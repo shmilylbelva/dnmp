@@ -1,17 +1,16 @@
 <?php
 /**
  * Created by shmilyelva
- * Date: 2018-09-20
- * Time: 9:55
+ * Date: 2018-09-21
+ * Time: 14:10
  */
 
 namespace app\lib\exception;
 
 
-class ThemeException extends BaseException
+class CategoryException extends BaseException
 {
-    public $code = 404;
+    public $code = 400;
     public $msg = '请求的类目不存在，请检查参数';
-    public $errorCode = 50000;
+    public $errorCode = 10001;
 }
-

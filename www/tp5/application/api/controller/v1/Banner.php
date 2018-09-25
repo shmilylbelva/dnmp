@@ -26,7 +26,7 @@ class Banner
 //       if($validate->scene('test')->goCheck()){
         (new DataValidate())->batch()->scene('test')->goCheck();
         $result = modelBanner::getBannerById($id);
-        if ($result->isEmpty()) {
+        if (!$result) {
             throw new MissException();
         }
 

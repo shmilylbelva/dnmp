@@ -40,6 +40,6 @@ class Product
         if ($result->isEmpty()){
             throw new CategoryException();
         }
-        return $result;
+        return $result->hidden(['summary']);
     }
 }

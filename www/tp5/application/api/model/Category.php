@@ -23,6 +23,7 @@ class Category extends Model
     }
 
     public static function getCategories(){
-        return self::all([],'img')->hidden(['topic_img_id']);
+//        return self::all([],'img');
+        return self::with('img')->fetchCollection()->select();
     }
 }

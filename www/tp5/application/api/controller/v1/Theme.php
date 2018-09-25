@@ -32,7 +32,7 @@ class Theme
     public function getComplexOne($id){
         (new DataValidate())->goCheck();
         $result = modelTheme::getThemeListById($id);
-        if ($result->isEmpty()){
+        if (!$result){
             throw new ThemeException();
         }
         return $result;

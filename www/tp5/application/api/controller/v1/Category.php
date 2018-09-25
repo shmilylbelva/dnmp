@@ -12,11 +12,12 @@ use app\lib\exception\CategoryException;
 
 class Category
 {
+
     /**
      * 全部分类
      */
     public function getCategories(){
-        $result = categoryModel::getCategories();
+        $result = categoryModel::getCategories()->hidden(['topic_img_id']);
         if ($result->isEmpty()){
             throw new CategoryException();
         }

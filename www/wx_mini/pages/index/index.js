@@ -1,54 +1,154 @@
 //index.js
 //获取应用实例
-const app = getApp()
-
+var app = getApp()
+var baseUrl = 'http://www.tp5.com/api/v1';
 Page({
-  data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+  onLoad: function () {
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+
+  getSuperToken: function () {
+    wx.request({
+      url: baseUrl + '/token/app',
+      data: {
+        ac: 'warcraft',
+        se: '777'
+      },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        console.log(res.data);
+        wx.setStorageSync('super_token', res.data.token);
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+
+  getToken: function () {
+    //调用登录接口
+    wx.login({
+      success: function (res) {
+        var code = res.code;
+        // console.log('code');
+        console.log(code);
+        wx.request({
+          url: baseUrl + '/token/user',
+          data: {
+            code: code
+          },
+          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          success: function (res) {
+            wx.setStorageSync('token', res.data);
+          },
+          fail: function (res) {
+            console.log(res.data);
+          }
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+    })
+  },
+
+  checkSession: function () {
+    wx.checkSession({
+      success: function () {
+        console.log('session success');
+      },
+      fail: function () {
+        console.log('session fail');
+      }
+    })
+  },
+
+  delivery: function () {
+    wx.request({
+      url: baseUrl + '/order/delivery',
+      header: {
+        token: wx.getStorageSync('super_token')
+      },
+      method: 'PUT',
+      data: {
+        // id:wx.getStorageSync('order_id')
+        id: 293
+      },
+      success: function (res) {
+        console.log(res.data);
+      }
+    })
+  },
+
+
+  //未必在点击支付前，先点击一下申请令牌，确保令牌申请成功
+  pay: function () {
+    var token = wx.getStorageSync('token');
+    var that = this;
+    // that.getPreOrder(token, 'A303256065493535')
+    wx.request({
+      url: baseUrl + '/order',
+      header: {
+        token: token
+      },
+      data: {
+        products:
+        [
+          {
+            product_id: 2, count: 16
+          },
+          // },
+          {
+            product_id: 3, count: 7
+          }
+        ]
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res.data);
+        // if (res.data.pass) {
+        //   wx.setStorageSync('order_id', res.data.order_id);
+        //   that.getPreOrder(token, res.data.order_id);
+        // }
+        // else {
+        //   console.log('订单未创建成功');
+        // }
+      }
+    })
+  },
+
+  getPreOrder: function (token, orderID) {
+    if (token) {
+      wx.request({
+        url: baseUrl + '/pay/pre_order',
+        method: 'POST',
+        header: {
+          token: token
+        },
+        data: {
+          id: orderID
+        },
+        success: function (res) {
+          var preData = res.data;
+          wx.requestPayment({
+            timeStamp: preData.timeStamp.toString(),
+            nonceStr: preData.nonceStr,
+            package: preData.package,
+            signType: preData.signType,
+            paySign: preData.paySign,
+            success: function (res) {
+              console.log(res.data);
+            },
+            fail: function (error) {
+              console.log(error);
+            }
           })
         }
       })
     }
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+
+  formID: function (event) {
+    console.log(event);
   }
 })

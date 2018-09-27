@@ -7,7 +7,6 @@
 
 namespace app\api\controller\v1;
 
-
 use app\api\service\UserToken;
 use app\api\validate\TokenGet;
 
@@ -15,9 +14,12 @@ class Token
 {
     public function getToken($code = '')
     {
+//        $code = request()->param('code');
         (new TokenGet())->goCheck();
-        $ut = new UserToken();        print_r($code);exit();
-        $result = $ut->get($code);
-        return $result;
+        $ut = new UserToken($code);
+        $token = $ut->get();
+        return [
+            'token' => $token
+        ];
     }
 }

@@ -17,4 +17,4 @@ Route::get('api/:v/theme/:id', 'api/:v.Theme/getComplexOne');
 Route::get('api/:v/product', 'api/:v.Product/getRecent');//上新
 Route::get('api/:v/category', 'api/:v.Category/getCategories');
 Route::get('api/:v/category/:id', 'api/:v.Product/getAllInCategory');//分类下的商品
-Route::get('api/:v/token/user', 'api/:v.Token/getToken');//获取code
+Route::post('api/:v/token/user', 'api/:v.Token/getToken');//获取code

@@ -27,7 +27,7 @@ class Product
         (new Count())->goCheck();
         $result = modelProduct::getRecent($count);
         $isEmpty = $result->hidden(['summary', 'stock'])->append(['from']);
-        if ($result->isEmpty()){
+        if ($result->isEmpty()) {
             throw new ProductException();
         }
         return $isEmpty;
@@ -37,9 +37,19 @@ class Product
     {
         (new DataValidate())->goCheck();
         $result = modelProduct::getAllInCategory($id);
-        if ($result->isEmpty()){
+        if ($result->isEmpty()) {
             throw new CategoryException();
         }
         return $result->hidden(['summary']);
+    }
+
+    public function detail($id)
+    {
+        (new DataValidate())->goCheck();
+        $result = modelProduct::detail($id);
+        if (!$result){
+            throw new ProductException();
+        }
+        return $result;
     }
 }

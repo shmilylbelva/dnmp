@@ -7,11 +7,9 @@
 
 namespace app\api\model;
 
-
-use think\Db;
 use think\Model;
 
-class BannerItem extends Model
+class BannerItem extends Base
 {
     protected $hidden = ['delete_time','update_time'];
     public function img()

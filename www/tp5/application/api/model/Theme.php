@@ -14,7 +14,7 @@ class Theme extends Base
 
     public function headImg()
     {
-        return $this->belongsTo('image', 'head_img_id', 'id');
+        return $this->belongsTo('Image', 'head_img_id', 'id');
     }
 
     public function products()

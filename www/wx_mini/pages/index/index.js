@@ -42,6 +42,7 @@ Page({
           },
           method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
           success: function (res) {
+            
             wx.setStorageSync('token', res.data);
           },
           fail: function (res) {

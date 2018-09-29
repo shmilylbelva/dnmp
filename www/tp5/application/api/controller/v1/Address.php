@@ -6,14 +6,39 @@
  */
 
 namespace app\api\controller\v1;
+
 use app\api\validate\AddressValidate;
 use app\api\service\Token as TokenService;
 use app\api\model\User as modelUser;
+
 use app\lib\exception\UserException;
 use app\lib\exception\SuccessException;
-
-class Address
+use think\Controller;
+//use app\api\middleware;
+class Address extends Controller
 {
+    //即将废除
+    protected $beforeActionList  = [
+        'checks' => ['only' => 'saveAddress']
+    ];
+
+    protected function checks()
+    {
+        print_r('111');exit();
+        $scope = TokenService::getCurrentTokenVar('scope');
+        if (!$scope){
+            throw new TokenException();
+        }
+        if ($scope < ScopeEnum::User) {
+            throw new ForbiddenException();
+        }
+        return true;
+    }
+
+//    protected  $middleware = [
+//      'Scope' => ['only' => 'saveAddress']
+//    ];
+
     public function saveAddress()
     {
         $validate = new AddressValidate();
@@ -30,9 +55,9 @@ class Address
             throw new UserException();
         }
         $filterData = $validate->getDataByRule(request()->post());
-        if(!$user->address){//新增
+        if (!$user->address) {//新增
             $user->address()->save($filterData);
-        }else {
+        } else {
             $user->address->save($filterData);
         }
 //        return new SuccessException();

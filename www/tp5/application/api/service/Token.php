@@ -39,8 +39,8 @@ class Token
         }
     }
 
-    public static function getCurrentUid() {
-        return  self:: getCurrentTokenVar('uid');
-    }
+//    public static function getCurrentUid() {
+//        return  self:: getCurrentTokenVar('uid');
+//    }
 
 }

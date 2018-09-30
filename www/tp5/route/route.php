@@ -30,4 +30,5 @@ Route::group('api/:v/category',function(){
 
 
 Route::post('api/:v/token/user', 'api/:v.Token/getToken');//获取code
-Route::post('api/:v/address', 'api/:v.Address/saveAddress');//获取code
+Route::post('api/:v/address', 'api/:v.Address/saveAddress')->middleware(['Scope']);//获取code
+Route::post('api/:v/order', 'api/:v.Order/placeOrder')->middleware(['ExclusiveScope']);//下单

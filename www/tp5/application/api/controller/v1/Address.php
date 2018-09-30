@@ -13,33 +13,34 @@ use app\api\model\User as modelUser;
 
 use app\lib\exception\UserException;
 use app\lib\exception\SuccessException;
-use app\lib\exception\ForbiddenException;
 use think\Controller;
+use app\lib\exception\ForbiddenException;
+use app\lib\exception\TokenException;
+use app\lib\enum\ScopeEnum;
 
-//use app\api\middleware;
 class Address extends Controller
 {
     //前置方法  即将废除
 //    protected $beforeActionList  = [
-//        'checks' => ['only' => ['saveAddress']]
+//        'checkPrimaryScope' => ['only' => ['saveAddress']]
 //    ];
 //
-//    protected function checks()
+//    protected function checkPrimaryScope()
 //    {
 //        $scope = TokenService::getCurrentTokenVar('scope');
 //        if (!$scope){
 //            throw new TokenException();
 //        }
-//        if ($scope < 17) {
-//            throw new ForbiddenException();
+//        if ($scope < ScopeEnum::User) {
+//            throw new ForbiddenException();getCurrentUid
 //        }
 //        return true;
 //    }
 
 //中间件
-    protected  $middleware = [
-    'Scope' => ['only' => ['saveAddress']]
-];
+//    protected  $middleware = [
+//    'Scope' => ['only' => ['saveAddress']]
+//];
 
     public function saveAddress()
     {
@@ -51,7 +52,7 @@ class Address extends Controller
          * 获取用户提交的数据
          * 判断数据是否已存在，不存在则添加，存在则更新
          */
-        $uid = TokenService::getCurrentUid();
+        $uid = TokenService::getCurrentTokenVar('uid');
         $user = modelUser::getUserById($uid);
         if (!$user) {
             throw new UserException();
@@ -62,7 +63,6 @@ class Address extends Controller
         } else {
             $user->address->save($filterData);
         }
-//        return new SuccessException();
         return json(new SuccessException())->code(201);//http状态码
     }
 }

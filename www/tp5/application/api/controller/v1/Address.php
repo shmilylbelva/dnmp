@@ -13,31 +13,33 @@ use app\api\model\User as modelUser;
 
 use app\lib\exception\UserException;
 use app\lib\exception\SuccessException;
+use app\lib\exception\ForbiddenException;
 use think\Controller;
+
 //use app\api\middleware;
 class Address extends Controller
 {
-    //即将废除
-    protected $beforeActionList  = [
-        'checks' => ['only' => 'saveAddress']
-    ];
-
-    protected function checks()
-    {
-        print_r('111');exit();
-        $scope = TokenService::getCurrentTokenVar('scope');
-        if (!$scope){
-            throw new TokenException();
-        }
-        if ($scope < ScopeEnum::User) {
-            throw new ForbiddenException();
-        }
-        return true;
-    }
-
-//    protected  $middleware = [
-//      'Scope' => ['only' => 'saveAddress']
+    //前置方法  即将废除
+//    protected $beforeActionList  = [
+//        'checks' => ['only' => ['saveAddress']]
 //    ];
+//
+//    protected function checks()
+//    {
+//        $scope = TokenService::getCurrentTokenVar('scope');
+//        if (!$scope){
+//            throw new TokenException();
+//        }
+//        if ($scope < 17) {
+//            throw new ForbiddenException();
+//        }
+//        return true;
+//    }
+
+//中间件
+    protected  $middleware = [
+    'Scope' => ['only' => ['saveAddress']]
+];
 
     public function saveAddress()
     {

@@ -9,6 +9,8 @@ namespace app\api\controller\v1;
 
 use app\api\validate\PlaceOrder;
 use think\Controller;
+use app\api\service\Token;
+
 
 class Order extends Controller
 {
@@ -18,5 +20,8 @@ class Order extends Controller
 
     public function placeOrder(){
         (new PlaceOrder())->goCheck();
+        $products = input('post.products/a');
+        $uid = Token::getCurrentTokenVar('uid');
+
     }
 }

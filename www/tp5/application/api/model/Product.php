@@ -40,4 +40,8 @@ class Product extends Base
     {
         return self::with(['contentImg.img','property'])->get($id);
     }
+
+    public static function getProductById($array){
+        return self::visible(['id','price','stock','name','main_img_url'])->select($array)->toArray();
+    }
 }

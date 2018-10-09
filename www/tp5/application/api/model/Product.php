@@ -42,6 +42,6 @@ class Product extends Base
     }
 
     public static function getProductById($array){
-        return self::visible(['id','price','stock','name','main_img_url'])->select($array)->toArray();
+        return self::select($array);
     }
 }

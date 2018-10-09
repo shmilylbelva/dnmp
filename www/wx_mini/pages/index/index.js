@@ -86,12 +86,11 @@ Page({
   pay: function () {
     var token = wx.getStorageSync('token');
     var that = this;
-    // that.getPreOrder(token, 'A303256065493535')
+    console.log(token);
+        // that.getPreOrder(token, 'A303256065493535')
     wx.request({
       url: baseUrl + '/order',
-      header: {
-        token: token
-      },
+      header: token,
       data: {
         products:
         [

@@ -53,7 +53,6 @@ class Order
             $data['snap_name'] = $snap['snapName'];
             $data['snap_address'] = $snap['snapAddress'];
             $data['snap_items'] = json_encode($snap['pStatus']);
-            $data['create_time'] = time();
             $order = modelOrder::createOrder($data);
             $orderID = $order->id;
             foreach ($this->oProducts as &$p) {
@@ -64,7 +63,7 @@ class Order
             return [
                 'order_no' => $data['order_no'],
                 'order_id' => $orderID,
-                'create_time' => $data['create_time'],
+                'create_time' => $order->create_time,
             ];
         }
         catch (\Exception $e){
@@ -124,6 +123,13 @@ class Order
         $result = Product::getProductById($oPIDs);
         return $result;
 
+    }
+
+    //检查库存量
+    public function checkOrderStock($orderID) {
+        $this->oProducts = OrderProduct::getOrderProduct($orderID);//
+        $this->products = $this->getProductsByOrder($this->oProducts)->visible(['id','price','stock','name','main_img_url']);
+        return $this->getOrderStatus();
     }
 
     private function getOrderStatus()

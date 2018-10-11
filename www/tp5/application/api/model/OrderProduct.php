@@ -10,5 +10,7 @@ namespace app\api\model;
 
 class OrderProduct extends Base
 {
-
+    public static function getOrderProduct($orderID){
+        return self::where('order_id','=',$orderID)->select()->visible(['count','product_id'])->toArray();
+    }
 }

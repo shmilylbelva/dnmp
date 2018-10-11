@@ -39,8 +39,16 @@ class Token
         }
     }
 
-//    public static function getCurrentUid() {
-//        return  self:: getCurrentTokenVar('uid');
-//    }
+    //检测是否为当前用户
+    public static function isValidOperate($checkedUID) {
+        if (!$checkedUID) {
+            throw new Exception('UID不能为空');
+        }
+        $currentUID = self::getCurrentTokenVar('uid');
+        if ($currentUID == $checkedUID) {
+            return true;
+        }
+        return false;
+    }
 
 }

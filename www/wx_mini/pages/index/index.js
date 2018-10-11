@@ -99,7 +99,7 @@ Page({
           },
           // },
           {
-            product_id: 3, count: 7
+            product_id: 3, count: 7777
           }
         ]
       },

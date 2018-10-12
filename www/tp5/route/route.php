@@ -33,4 +33,4 @@ Route::post('api/:v/token/user', 'api/:v.Token/getToken');//获取code
 Route::post('api/:v/address', 'api/:v.Address/saveAddress')->middleware(['Scope']);//获取code
 Route::post('api/:v/order', 'api/:v.Order/placeOrder')->middleware(['ExclusiveScope']);//下单
 
-//Route::get('api/:v/pay/:orderID', 'api/:v.Pay/getPreOrder');//
+Route::post('api/:v/pay/pre_order', 'api/:v.Pay/getPreOrder');//

@@ -9,7 +9,7 @@ namespace app\api\controller\v1;
 
 
 use app\api\validate\DataValidate;
-use app\api\service\Order as orderService;
+use app\api\service\Pay as servicePay;
 
 class Pay
 {
@@ -18,11 +18,11 @@ class Pay
         'ExclusiveScope' => ['only' => ['getPreOrder']]
     ];
 
-    public function getPreOrder($orderID)
+    public function getPreOrder($id)
     {
         (new DataValidate())->goCheck();
-        $order = new orderService();
-        return $order->checkOrderStock($orderID);
+        $pay = new servicePay($id);
+        return $pay->pay();
     }
 
 }

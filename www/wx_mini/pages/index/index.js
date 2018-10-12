@@ -99,32 +99,30 @@ Page({
           },
           // },
           {
-            product_id: 3, count: 7777
+            product_id: 3, count: 7
           }
         ]
       },
       method: 'POST',
       success: function (res) {
-        console.log(res.data);
-        // if (res.data.pass) {
-        //   wx.setStorageSync('order_id', res.data.order_id);
-        //   that.getPreOrder(token, res.data.order_id);
-        // }
-        // else {
-        //   console.log('订单未创建成功');
-        // }
+        if (res.data.pass) {
+          wx.setStorageSync('order_id', res.data.order_id);
+          that.getPreOrder(token, res.data.order_id);
+        }
+        else {
+          console.log('订单未创建成功');
+        }
       }
     })
   },
 
   getPreOrder: function (token, orderID) {
+    console.log(token);
     if (token) {
       wx.request({
         url: baseUrl + '/pay/pre_order',
         method: 'POST',
-        header: {
-          token: token
-        },
+        header: token ,
         data: {
           id: orderID
         },

@@ -70,17 +70,35 @@ class Pay
     private function getPaySignature($wxOrderData)
     {
         $config = new \WxPayConfig();
-        $wxOrder = \WxPayApi::unifiedOrder($config,$wxOrderData);
+        $wxOrder = \WxPayApi::unifiedOrder($config, $wxOrderData);
         if ($wxOrder['return_code'] != 'SUCCESS' || $wxOrder['return_code'] != 'SUCCESS') {
-            Log::record($wxOrder,'error');
-            Log::record('获取预支付订单失败','error');
+            Log::record($wxOrder, 'error');
+            Log::record('获取预支付订单失败', 'error');
         }
-        $this->。recordPreOrder($wxOrder);
-        return $wxOrder;
+        $this->recordPreOrder($wxOrder);
+        $signature = $this->sign($wxOrder,$config);
+        return $signature;
     }
 
-    private function recordPreOrder($wxOrder) {
-        modelOrder::where('id','=',$this->orderID)->update(['prepay_id' => $wxOrder['prepay_id']]);
+    private function sign($wxOrder,$config)
+    {
+        $jsApiPayData = new \WxPayJsApiPay();
+        $jsApiPayData->SetAppid(config('wx.app_id'));
+        $jsApiPayData->SetTimeStamp((string)time());
+        $rand = md5(time().mt_rand(0,1000));
+        $jsApiPayData->SetNonceStr($rand);
+        $jsApiPayData->SetPackage('prepay_id='.$wxOrder['prepay_id']);
+        $jsApiPayData->SetSignType('md5');
+        $sign = $jsApiPayData->MakeSign($config);
+        $rawValues = $jsApiPayData->GetValues();
+        $rawValues['paySign'] = $sign;
+        unset($rawValues['appId']);
+        return $rawValues;
+    }
+
+    private function recordPreOrder($wxOrder)
+    {
+        modelOrder::where('id', '=', $this->orderID)->update(['prepay_id' => $wxOrder['prepay_id']]);
     }
 
     //  检测订单是否存在

@@ -34,3 +34,4 @@ Route::post('api/:v/address', 'api/:v.Address/saveAddress')->middleware(['Scope'
 Route::post('api/:v/order', 'api/:v.Order/placeOrder')->middleware(['ExclusiveScope']);//下单
 
 Route::post('api/:v/pay/pre_order', 'api/:v.Pay/getPreOrder');//
+Route::post('api/:v/pay/notify', 'api/:v.Pay/receiveNotify');//

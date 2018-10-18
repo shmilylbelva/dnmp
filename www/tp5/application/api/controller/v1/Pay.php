@@ -25,4 +25,13 @@ class Pay
         return $pay->pay();
     }
 
+
+    public function receiveNotify()
+    {
+        //通知频率 15/15/30/180/1800/1800/1800/3600
+
+        //1.检查库存，防止超卖
+        //2.更新订单状态
+        //3.减库存
+    }
 }

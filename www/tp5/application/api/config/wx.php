@@ -11,5 +11,5 @@ return [
         "appid=%s&secret=%s&js_code=%s&grant_type=authorization_code",
     'mchid' => '1900009851',
     'key' => '8934e7d15453e97507ef794cf7b0519d',
-    'notify_url' => 'http://www.qq.com',
+    'notify_url' => 'http://www.51.com/api/v1/pay/notify',
 ];

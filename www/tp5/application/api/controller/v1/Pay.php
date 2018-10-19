@@ -8,8 +8,11 @@
 namespace app\api\controller\v1;
 
 
+use app\api\service\WxNotify;
 use app\api\validate\DataValidate;
 use app\api\service\Pay as servicePay;
+
+require_once Env::get('root_path') . 'extend/WxPay/WxPay.Api.php';
 
 class Pay
 {
@@ -33,5 +36,8 @@ class Pay
         //1.检查库存，防止超卖
         //2.更新订单状态
         //3.减库存
+        $config = new \WxPayConfig();
+        $notify = new WxNotify();
+        $notify->Handle($config);
     }
 }

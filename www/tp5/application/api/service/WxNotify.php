@@ -13,6 +13,7 @@ use app\api\service\Order as orderService;
 use app\lib\enum\OrderStatusEnum;
 use think\Db;
 use think\facade\Log;
+use think\facade\Env;
 
 require_once Env::get('root_path') . 'extend/WxPay/WxPay.Api.php';
 

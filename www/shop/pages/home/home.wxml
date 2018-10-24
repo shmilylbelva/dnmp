@@ -1,0 +1,12 @@
+<!--pages/home/home.wxml-->
+<view>
+  <swiper indicator-dots="true"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{images}}">
+    <swiper-item>
+      <image src="{{item.img.url}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+  <view>测试</view>
+</view>

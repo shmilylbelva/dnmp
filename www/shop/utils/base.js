@@ -1,4 +1,4 @@
-import { Config } from '../utils/config.js';
+import { Config } from 'config.js';
 
 class Base {
   constructor(){
@@ -27,3 +27,4 @@ class Base {
   }
 
 }
+export { Base };

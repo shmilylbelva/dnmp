@@ -1,5 +1,6 @@
 // pages/home/home.js
-import {Home} from 'home-model.js';
+import { Home } from 'home-model.js';
+
 var home = new Home();
 Page({
 
@@ -26,3 +27,5 @@ Page({
   }
 
 })
+
+export { Page };

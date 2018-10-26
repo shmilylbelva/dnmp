@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    images: ''
+    images: '',
+    theme:'',
+    themeFull:''
   },
 
   /**
@@ -19,11 +21,22 @@ Page({
   },
   _loadDate:function(){
     var id = 1;
-    var resp = home.getBannerData(id, (res)=>{
+    home.getBannerData(id, (res)=>{
       this.setData({
         images: res.data.items
       })     
     });
+
+    home.getThemeData((res) => {
+      this.setData({
+        theme: res.data
+      })
+    });    
+    home.getThemeFullData((res) => {
+      this.setData({
+        themeFull: res.data[0]
+      })
+    });      
   }
 
 })

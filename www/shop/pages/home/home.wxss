@@ -1,15 +1,43 @@
 /* pages/home/home.wxss */
 
 .swiper{
-  height: 400rpx;
   width: 100%;
+  height: 400rpx;
 }
 .banner-item{
   height: 100%;
   width:100%;
 }
 
-.banner-item{
+.item-image{
   height: 100%;
   width: 100%;
+}
+
+.home-main{
+  width:100%;
+  height: 100%;
+}
+.home-main-theme{
+  width:100%;
+  height: 100%;
+}
+.home-main-header{
+  color:bisque;
+  text-align: center;
+  margin:5px;
+}
+.theme-box{
+  width: 100%;
+  height: 100%;
+  display:flex;     
+}
+.theme-item{
+  border: 1px solid #fff;
+  width: 100%;
+  height: 320rpx;
+}
+.theme-image{
+  width: 100%;
+  height:320rpx;
 }

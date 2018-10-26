@@ -13,12 +13,24 @@ class Home extends Base{
       }
     }
     this.request(params);
-    // wx.request({
-    //   url: 'http://www.tp5.com/api/v1/banner/'+id,
-    //   method: 'GET',
-    //   success: function(res) {
-    //     callBack(res);
-    //   }
-    // })
+
   }
+  getThemeData(callBack) {
+    var params = {
+      url: '/theme?ids=1,2',
+      sCallBack: function (res) {
+        callBack && callBack(res);
+      }
+    }
+    this.request(params);
+  }
+  getThemeFullData(callBack) {
+    var params = {
+      url: '/theme?ids=3',
+      sCallBack: function (res) {
+        callBack && callBack(res);
+      }
+    }
+    this.request(params);
+  }  
 } export {Home};

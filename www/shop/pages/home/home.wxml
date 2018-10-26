@@ -7,5 +7,21 @@
       </swiper-item>
     </block>
   </swiper>
-  <view>测试</view>
+  <view class="home-main">
+    <view class="home-main-theme">
+      <view class="home-main-header">精选主题</view>
+      <view class="theme-box">
+        <block wx:for="{{theme}}">
+          <view class="theme-item">
+            <image mode="aspectFill" src="{{item.topic_img.url}}" class="theme-image" ></image>
+          </view>
+        </block>       
+      </view>  
+      <view class="theme-item">
+        <image mode="aspectFill" src="{{themeFull.head_img.url}}" class="theme-image" ></image>
+      </view>           
+    </view>
+    
+    <view class="home-main-products"></view>    
+  </view>
 </view>

@@ -4,6 +4,13 @@ DNMP（Docker + Nginx/Openresty + MySQL5,8 + PHP5,7,8 + Redis + ElasticSearch + 
 
 [**[GitHub地址]**](https://github.com/shmilylbelva/dnmp)
 
+## 重学php系列文章
+
+[**[1.1 windows 上搭建docker环境]**](https://github.com/shmilylbelva/dnmp/Relearn-Modern-PHP/1-1.md)
+
+[**[1.2 docker 配置mysql8.0主从复制]**](https://github.com/shmilylbelva/dnmp/Relearn-Modern-PHP/1-2.md)
+
+[**[1.3 docker下配置hyperf-3.0，dnmp 使用php8.1版本]**](https://github.com/shmilylbelva/dnmp/Relearn-Modern-PHP/1-3.md)
 
 DNMP项目特点：
 1. `100%`开源

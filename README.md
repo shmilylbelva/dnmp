@@ -51,8 +51,12 @@ DNMP项目特点：
     - [8.2 Docker使用cron定时任务](#82-Docker使用cron定时任务)
     - [8.3 Docker容器时间](#83-Docker容器时间)
     - [8.4 如何连接MySQL和Redis服务器](#84-如何连接MySQL和Redis服务器)
-
-
+- [重学php系列文章](#9重学php系列文章)
+    - [9.1 swoole系列](#91-swoole系列)
+    - [9.2 PHP基础系列](#92-PHP基础系列)
+    - [9.3 mysql系列](#93-mysql系列)
+    - [9.4 工具系列](#94-工具系列)
+    - [9.5 linux系列](#95-linux系列)
 ## 1.目录结构
 
 ```
@@ -518,8 +522,8 @@ mysql>flush privileges;
 ## License
 MIT
 
-## 重学php系列文章
-### swoole系列
+## 9 重学php系列文章
+### 9.1 swoole系列
 [**[1.1 windows 上搭建docker环境]**](https://github.com/shmilylbelva/Relearn-Modern-PHP/1-1.md)
 
 [**[1.2 docker 配置mysql8.0主从复制]**](https://github.com/shmilylbelva/Relearn-Modern-PHP/1-2.md)
@@ -528,7 +532,7 @@ MIT
 
 [**[swoole监控服务进程掉线自动重启2种方法]**](https://github.com/shmilylbelva/Relearn-Modern-PHP/1-swoole.md)
 
-### PHP基础系列
+### 9.2 PHP基础系列
 
 [**[2.1 PHP编码规范及建议]**](https://github.com/shmilylbelva/Relearn-Modern-PHP/2-1.md)
 
@@ -552,7 +556,7 @@ MIT
 
 [**[2.11 PHP中call_user_func 与 call_user_func_array的使用]**](https://github.com/shmilylbelva/Relearn-Modern-PHP/2-11.md)
 
-### mysql系列
+### 9.3 mysql系列
 [**[3.1 mysql优化笔记----数据库设计规范]**](https://github.com/shmilylbelva/Relearn-Modern-PHP/3-1.md)
 
 [**[3.2 mysql优化笔记----SQL执行计划]**](https://github.com/shmilylbelva/Relearn-Modern-PHP/3-2.md)
@@ -573,7 +577,7 @@ MIT
 
 [**[3.9 linux下更改mysql数据库的存放目录]**](https://github.com/shmilylbelva/Relearn-Modern-PHP/3-9.md)
 
-### 工具系列
+### 9.4 工具系列
 [**[4.1 Linux搭建GitLab汉化版]**](https://github.com/shmilylbelva/Relearn-Modern-PHP/4-1.md)
 
 [**[4.2 gitlab使用系统nginx,禁用自带的nginx]**](https://github.com/shmilylbelva/Relearn-Modern-PHP/4-2.md)
@@ -590,7 +594,7 @@ MIT
 
 [**[4.8 利用apidoc维护api接口文档]**](https://github.com/shmilylbelva/Relearn-Modern-PHP/4-8.md)
 
-### linux系列
+### 9.5 linux系列
 
 [**[5.1 Linux centos7 nginx 平滑升级]**](https://github.com/shmilylbelva/Relearn-Modern-PHP/5-1.md)
 
